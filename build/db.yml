@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  db_mongo:
+    image: postgres:15.0-alpine3.16
+    restart: always
+    environment:
+      MONGO_USER: ${MONGO_USER}
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+    volumes: 
+      - mongo_data:/var/lib/mongodb/data
+      - ./data/mongo/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - event_management
+
+volumes:
+  mongo_data:
+    driver: local
+
+networks:
+  event_management:
+    external: true

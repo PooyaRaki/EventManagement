@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  gateway-service:
+    build:
+      dockerfile: Dockerfile
+      context: ../services/gateway-service
+    networks:
+      - event_management
+    env_file:
+      - ../services/gateway-service/.env
+    restart: always
+
+  auth-service:
+    build:
+      context: ../services/auth-service
+      dockerfile: Dockerfile
+    networks:
+      - event_management
+    env_file:
+      - ../services/auth-service/.env
+    restart: always
+
+  event-service:
+    build:
+      context: ../services/event-service
+      dockerfile: Dockerfile
+    networks:
+      - event_management
+    env_file:
+      - ../services/event-service/.env
+    restart: always
+
+  user-service:
+    build:
+      context: ../services/user-service
+      dockerfile: Dockerfile
+    networks:
+      - event_management
+    env_file:
+      - ../services/user-service/.env
+    restart: always
+
+  notification-service:
+    build:
+      context: ../services/notification-service
+      dockerfile: Dockerfile
+    networks:
+      - event_management
+    env_file:
+      - ../services/notification-service/.env
+    restart: always
+
+networks:
+  event_management:
+    external: true

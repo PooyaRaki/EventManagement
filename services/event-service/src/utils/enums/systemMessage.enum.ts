@@ -1,0 +1,16 @@
+export enum SystemMessage {
+    ROLE_NOT_FOUND = 'Role Not Found!',
+    EVENT_NOT_FOUND = 'Event Not Found!',
+    UNKNOWN_ERROR = 'An error occurred!',
+    PERMISSION_DENIED = 'Permission Denied!',
+    PERFORMER_NOT_FOUND = 'Performer not found!',
+    EVENT_ALREADY_STARTED = 'Event has already started!',
+    ALREADY_JOINED = 'You have already joined this event!',
+    CANNOT_JOIN = 'Your specialties do not match this event!!',
+    CANNOT_JOIN_SELF_EVENT = 'You can not join your own event!',
+    EVENT_NOT_ONBOARDING = 'Event does not accept new performers!',
+    JOIN_FAIL = 'There was an error in joining the event. Try again!',
+    EVENT_ROLE_FULL = 'There is not more room for your role in this event!',
+    INSTRUMENT_ALREADY_ADDED = 'This instrument has already been added to the event!',
+    EMPTY_SEATS_EXIST = 'There is still empty seats. To start an event all the seats must be occupied!',
+}

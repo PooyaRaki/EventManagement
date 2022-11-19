@@ -1,0 +1,13 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-test.ts$",
+  "moduleNameMapper": {
+    "@utils/(.*)": "<rootDir>/../src/utils/$1",
+    "@components/(.*)": "<rootDir>/../src/components/$1"
+  },
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  }
+}

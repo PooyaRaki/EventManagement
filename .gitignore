@@ -1,0 +1,8 @@
+**/dist
+**/dist/*
+**/node_modules
+**/statics
+**/*.log
+/nginx/**.pem
+.vscode/
+**/.DS_Store
