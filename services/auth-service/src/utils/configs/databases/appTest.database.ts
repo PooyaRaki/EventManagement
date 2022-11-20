@@ -1,6 +1,6 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 
-export const TestAppDatabaseConfig: TypeOrmModuleOptions = {
+export const AppTestDatabaseConfig: TypeOrmModuleOptions = {
     type: 'postgres',
     dropSchema: true,
     synchronize: true,
@@ -10,5 +10,5 @@ export const TestAppDatabaseConfig: TypeOrmModuleOptions = {
     username: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     port: ~~(process.env.POSTGRES_PORT || 5432),
-    database: process.env.POSTGRES_DATABASE,
+    database: `${process.env.POSTGRES_DATABASE}_test`,
 }

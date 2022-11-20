@@ -3,4 +3,4 @@ if (!process.env.NODE_ENV) {
 }
 
 export * from './app.database';
-export * from './testApp.database';
+export * from './appTest.database';

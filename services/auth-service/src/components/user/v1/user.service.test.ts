@@ -1,22 +1,14 @@
-import { TestingModule } from '@nestjs/testing';
-import { getDataSourceToken } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { CreateUserPayload } from './payloads';
-import { UserModuleV1Test } from './userTest.module';
 import { UserService } from './user.service';
+import { CreateUserPayload } from './payloads';
+import { TestingModule } from '@nestjs/testing';
+import { UserModuleV1Test } from './userTest.module';
+import { getDataSourceToken } from '@nestjs/typeorm';
 import { BadRequestException } from '@utils/exceptions';
 
 let connection: DataSource;
 let moduleRef: TestingModule;
 let userService: UserService;
-
-const validEmail = 'valid@test.com';
-const validEmail2 = 'valid2@test.com';
-const validEmail3 = 'valid3@test.com';
-// const invalidEmail = 'invalid@test.com';
-// const invalidEmailPattern = 'InvalidEmail';
-const validPassword = '1234567890';
-// const invalidPassword = 'INVALID';
 
 describe('UserService', () => {
     beforeAll(async () => {
@@ -37,9 +29,9 @@ describe('UserService', () => {
     describe('createUser', () => {
         test('Should create a user with Correct data provided', async() => {
             const data: CreateUserPayload = {
-                email: validEmail,
-                password: validPassword,
-                passwordConfirm: validPassword,
+                email: 'valid@test.com',
+                password: '1234567890',
+                passwordConfirm: '1234567890',
             };
 
             const result = await userService.createUser(data);
@@ -50,8 +42,8 @@ describe('UserService', () => {
 
         test('Should throw when passwords do not match', async () => {
             const data: CreateUserPayload = {
-                email: validEmail2,
-                password: validPassword,
+                email: 'valid2@test.com',
+                password: '1234567890',
                 passwordConfirm: 'INVALID_PASSWORD',
             };
 
@@ -62,9 +54,9 @@ describe('UserService', () => {
 
         test('Should throw when duplicate email is provided', async () => {
             const data: CreateUserPayload = {
-                email: validEmail3,
-                password: validPassword,
-                passwordConfirm: validPassword,
+                email: 'valid3@test.com',
+                password: '1234567890',
+                passwordConfirm: '1234567890',
             };
 
             const result = userService.createUser(data);
@@ -79,8 +71,8 @@ describe('UserService', () => {
         test('Should Login with Correct Credentials', async () => {
             const data: CreateUserPayload = {
                 email: 'login@localhost.com',
-                password: validPassword,
-                passwordConfirm: validPassword,
+                password: '1234567890',
+                passwordConfirm: '1234567890',
             };
 
             const resultRegister = await userService.createUser(data);
