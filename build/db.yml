@@ -2,18 +2,53 @@ version: '3.9'
 
 services:
   db_mongo:
+    image: mongo:5.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - event_management
+    restart: always
+
+  db_postgres:
     image: postgres:15.0-alpine3.16
     restart: always
     environment:
-      MONGO_USER: ${MONGO_USER}
-      MONGO_PASSWORD: ${MONGO_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes: 
-      - mongo_data:/var/lib/mongodb/data
-      - ./data/mongo/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+      - ./data/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - event_management
+
+  db_redis:
+    image: "redis:7.0.5-alpine3.16"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 1024M
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+    command: /opt/bitnami/scripts/redis/run.sh --maxmemory 1024mb --maxmemory-policy allkeys-lru
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASS}
+      - REDIS_DISABLE_COMMANDS=${REDIS_DISABLE_COMMANDS}
+    restart: always
+    volumes:
+      - redis_data:/bitnami/redis/data
     networks:
       - event_management
 
 volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
   mongo_data:
     driver: local
 

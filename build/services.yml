@@ -5,50 +5,50 @@ services:
     build:
       dockerfile: Dockerfile
       context: ../services/gateway-service
-    networks:
-      - event_management
     env_file:
       - ../services/gateway-service/.env
+    networks:
+      - event_management
     restart: always
 
   auth-service:
     build:
       context: ../services/auth-service
       dockerfile: Dockerfile
-    networks:
-      - event_management
     env_file:
       - ../services/auth-service/.env
+    networks:
+      - event_management
     restart: always
 
   event-service:
     build:
       context: ../services/event-service
       dockerfile: Dockerfile
-    networks:
-      - event_management
     env_file:
       - ../services/event-service/.env
+    networks:
+      - event_management
     restart: always
 
   user-service:
     build:
       context: ../services/user-service
       dockerfile: Dockerfile
-    networks:
-      - event_management
     env_file:
       - ../services/user-service/.env
+    networks:
+      - event_management
     restart: always
 
   notification-service:
     build:
       context: ../services/notification-service
       dockerfile: Dockerfile
-    networks:
-      - event_management
     env_file:
       - ../services/notification-service/.env
+    networks:
+      - event_management
     restart: always
 
 networks:

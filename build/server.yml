@@ -6,8 +6,8 @@ services:
     image: nginx:1.23.2-alpine
     depends_on: 
       - auth-service
+      - user-service
       - event-service
-      - profile-service
       - gateway-service
       - notification-service
     volumes:
