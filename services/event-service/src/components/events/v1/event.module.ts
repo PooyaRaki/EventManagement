@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { EventParticipants } from './eventParticipants.service';
+import { EventService } from '@components/events/v1/event.service';
+import { NotificationModuleV1 } from '@components/notifications/v1';
+import { EventController } from '@components/events/v1/event.controller';
+import { EventRolesService } from '@components/events/v1/eventRoles.service';
+import { PerformersService } from '@components/events/v1/performers.service';
+import { PerformersController } from '@components/events/v1/performers.controller';
 import {
     EventRoles,
     Performers,
     EventEntity,
 } from '@components/events/v1/entities';
-import { EventService } from '@components/events/v1/event.service';
-import { EventController } from '@components/events/v1/event.controller';
-import { PerformersService } from '@components/events/v1/performers.service';
-import { EventRolesService } from '@components/events/v1/eventRoles.service';
-import { PerformersController } from '@components/events/v1/performers.controller';
 
 @Module({
     imports: [
@@ -18,6 +20,7 @@ import { PerformersController } from '@components/events/v1/performers.controlle
             Performers,
             EventEntity,
         ]),
+        NotificationModuleV1,
     ],
     controllers: [
         EventController,
@@ -27,6 +30,7 @@ import { PerformersController } from '@components/events/v1/performers.controlle
         EventService,
         EventRolesService,
         PerformersService,
+        EventParticipants,
     ],
 })
 export class EventModuleV1 {

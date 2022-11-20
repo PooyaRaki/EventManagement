@@ -1,13 +1,17 @@
 import { Repository } from 'typeorm';
 import { UserId } from '@utils/types';
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { SystemMessage } from '@utils/enums';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EventStatus } from '@components/events/v1/enums';
 import { EventEntity } from '@components/events/v1/entities';
 import { IFindEvent } from '@components/events/v1/interfaces';
-import { BadRequestException } from '@utils/helpers/exceptions';
+import { NotificationService } from '@components/notifications/v1';
 import { EventRolesService } from '@components/events/v1/eventRoles.service';
+import {
+    ForbiddenException,
+    BadRequestException,
+} from '@utils/helpers/exceptions';
 import {
     StartEventPayload,
     CreateEventPayload,
@@ -21,6 +25,7 @@ export class EventService {
         private readonly eventRepository: Repository<EventEntity>,
 
         private readonly eventRoleService: EventRolesService,
+        private readonly notificationService: NotificationService,
     ) {
         //
     }
@@ -167,6 +172,12 @@ export class EventService {
         await this.validateStartingEvent(userId, event);
 
         const startedEvent = await this.changeStatus(event, EventStatus.ACTIVE);
+
+        this.notificationService.sendPush({
+            users: [1, 2, 3], // @todo Event participants user ids
+            title: event.title,
+            description: event.description,
+        });
 
         return startedEvent;
     }

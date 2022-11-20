@@ -3,3 +3,4 @@ if (!process.env.NODE_ENV) {
 }
 
 export * from './app.microservice';
+export * from './notification.microservice';

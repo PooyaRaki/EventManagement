@@ -48,6 +48,8 @@ export const MicroserviceResponse = async <T>(source: Observable<T>, timeoutSeco
  * @returns {Promise<never>}
  */
 export const HandleMicroserviceError = async (error: RpcErrorResponse | TimeoutError): Promise<never> => {
+    console.log(error, '--');
+    
     if (error instanceof TimeoutError) {
         throw new InternalServerErrorException(SystemMessage.CONNECTION_ERROR);
     }

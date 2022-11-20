@@ -4,6 +4,7 @@ import {
     EventEntity,
 } from '@components/events/v1/entities';
 import {
+    Index,
     Column,
     Entity,
     Unique,
@@ -11,7 +12,6 @@ import {
     OneToMany,
     RelationId,
     PrimaryGeneratedColumn,
-    Index,
 } from 'typeorm';
 
 @Unique('EventInstrument', [ 'instrumentId', 'event' ])

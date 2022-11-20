@@ -1,8 +1,17 @@
 import { Controller } from '@nestjs/common';
+import { UserInHeader } from '@utils/interfaces';
 import { MessagePattern } from '@nestjs/microservices';
+import { EventRolesService } from './eventRoles.service';
 import { EventStatus } from '@components/events/v1/enums';
-import { EventEntity, EventRoles } from '@components/events/v1/entities';
 import { EventService } from '@components/events/v1/event.service';
+import {
+    MessagePayload,
+    UserFromHeader,
+} from '@utils/decorators';
+import {
+    EventRoles,
+    EventEntity,
+} from '@components/events/v1/entities';
 import {
     FindEventPayload,
     StartEventPayload,
@@ -10,9 +19,6 @@ import {
     FindUserEventsPayload,
     AddRoleToEventPayload,
 } from '@components/events/v1/payloads';
-import { MessagePayload, UserFromHeader } from '@utils/decorators';
-import { UserInHeader } from '@utils/interfaces';
-import { EventRolesService } from './eventRoles.service';
 
 @Controller()
 export class EventController {

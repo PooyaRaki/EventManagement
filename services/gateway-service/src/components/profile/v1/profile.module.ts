@@ -1,9 +1,12 @@
-import { CacheModule, Module } from '@nestjs/common';
 import { AuthGuardModule } from '@utils/guards/auth';
 import { ClientsModule } from '@nestjs/microservices';
 import { ProfileController } from './profile.controller';
 import { ProfileCacheConfig } from '@utils/configs/caches';
 import { UserMicroserviceConfig } from '@utils/configs/microservices';
+import {
+    Module,
+    CacheModule,
+} from '@nestjs/common';
 
 @Module({
     imports: [

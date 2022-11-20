@@ -4,6 +4,7 @@ export enum SystemMessage {
     UNKNOWN_ERROR = 'An error occurred!',
     PERMISSION_DENIED = 'Permission Denied!',
     PERFORMER_NOT_FOUND = 'Performer not found!',
+    CONNECTION_ERROR = 'Connection was Interrupted!',
     EVENT_ALREADY_STARTED = 'Event has already started!',
     ALREADY_JOINED = 'You have already joined this event!',
     CANNOT_JOIN = 'Your specialties do not match this event!!',

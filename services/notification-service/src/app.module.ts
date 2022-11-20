@@ -1,9 +1,9 @@
-import { NotificationModuleV1 } from '@components/notifications/v1';
 import { Module } from '@nestjs/common';
+import { NotificationModuleV1 } from '@components/notifications/v1';
 
 @Module({
   imports: [
-    NotificationModuleV1
+    NotificationModuleV1,
   ],
   controllers: [],
   providers: [],

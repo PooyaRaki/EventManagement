@@ -1,8 +1,8 @@
-import { InstrumentModuleV1 } from '@components/instrument/v1';
-import { ProfileModuleV1 } from '@components/profile/v1/profile.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MongoDatabaseConfig } from '@utils/configs/databases';
+import { InstrumentModuleV1 } from '@components/instrument/v1';
+import { ProfileModuleV1 } from '@components/profile/v1/profile.module';
 
 @Module({
   imports: [
