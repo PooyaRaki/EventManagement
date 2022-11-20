@@ -37,6 +37,9 @@ To install and run this project manually:
 - Go through the readmes and Run each microservice separately.
 - Run the requestor with the help of the Readme provided.
 
+## Documentation
+Api documents (OpenAPI Specification) are available at /docs
+
 ## Roadmap
 
 - Adding more unit tests
