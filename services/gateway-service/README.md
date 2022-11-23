@@ -1,4 +1,4 @@
-# User Service
+# Gateway Service
 
 Api gateway
 
